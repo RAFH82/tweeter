@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -55,19 +56,17 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      Reprehenderit velit ea aliquip id ut in. Commodo exercitation Lorem nisi
-      laboris fugiat. Laboris laborum occaecat commodo labore nulla in ipsum
-      enim nostrud ea officia ullamco. Sint ea nulla ex exercitation enim dolor
-      est. Id est cupidatat cillum fugiat qui ut cupidatat sit mollit est
-      cupidatat irure ut Lorem. Amet Lorem nisi voluptate esse anim excepteur
-      cillum. Commodo aute reprehenderit laboris tempor dolore fugiat ipsum sit
-      in culpa id voluptate quis. Reprehenderit velit ea aliquip id ut in.
-      Commodo exercitation Lorem nisi laboris fugiat. Laboris laborum occaecat
-      commodo labore nulla in ipsum enim nostrud ea officia ullamco. Sint ea
-      nulla ex exercitation enim dolor est. Id est cupidatat cillum fugiat qui
-      ut cupidatat sit mollit est cupidatat irure ut Lorem. Amet Lorem nisi
-      voluptate esse anim excepteur cillum. Commodo aute reprehenderit laboris
-      tempor dolore fugiat ipsum sit in culpa id voluptate quis.
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST">
+          <label for="tweet-text">What are you humming about?</label>
+          <input type="text" id="tweet-text" name="text" />
+          <div id="tweet-bottom">
+            <button id="tweet-button" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
     </main>
   </body>
 </html>
