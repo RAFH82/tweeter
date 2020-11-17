@@ -23,4 +23,6 @@ nav span {
 #tweet-arrow {
   color: red;
   font-weight: bold;
+  position: relative;
+  top: 0.2em;
 }
