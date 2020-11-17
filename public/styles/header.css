@@ -6,8 +6,7 @@ header {
   flex-direction: column;
   background-image: url(../images/brushed-alum.png);
   background-color: #6773a1;
-  color: #ffffff;
-  font-size: 36px;
+  color: #000000;
+  font-size: 40px;
   padding-top: 0.5em;
 }
-
