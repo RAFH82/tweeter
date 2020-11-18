@@ -31,6 +31,11 @@ $(document).ready(() => {
   ];
 
   function createTweetElement(tweetData) {
+    const dayInMs = 1000 * 60 * 60 * 24;
+
+    const daysPassed = Math.floor(
+      (Date.now() - tweetData.created_at) / dayInMs
+    );
     const $tweet = `
     <article class="tweet">
           <header class="tweet-header active">
@@ -46,7 +51,7 @@ $(document).ready(() => {
             <div class="tweet-body active">${tweetData.content.text}</div>
           </div>
           <footer class="tweet-footer active">
-            <div>${tweetData.created_at}</div>
+            <div>${daysPassed} days ago</div>
             <div>
               <i class="fa fa-flag" aria-hidden="true"></i>
               <i class="fa fa-heart" aria-hidden="true"></i>
@@ -59,6 +64,7 @@ $(document).ready(() => {
   }
 
   function renderTweets(tweets) {
+    $("#tweets-container").empty();
     for (let tweetsData of tweets) {
       const $tweet = createTweetElement(tweetsData);
       $("#tweets-container").append($tweet);
@@ -66,7 +72,4 @@ $(document).ready(() => {
   }
 
   renderTweets(data);
-  // const $tweet = createTweetElement(tweetData);
-
-  // $("#tweets-container").append($tweet);
 });
