@@ -1,7 +1,3 @@
-main {
-  font-weight: bold;
-}
-
 #tweet-button {
   background-color: #4056a1;
   color: white;
@@ -55,6 +51,7 @@ main {
   width: 100%;
   height: 3em;
   border-bottom: 2px solid #545149;
+  border-bottom-width: 90%;
   padding-top: 0.5em;
   font-size: 24px;
 }
