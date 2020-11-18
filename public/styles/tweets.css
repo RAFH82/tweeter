@@ -15,19 +15,7 @@ article:hover header > *:last-child {
   display: inline-block;
 }
 
-article:hover img {
-  opacity: 1;
-}
-
-article:hover .avatar-name {
-  opacity: 1;
-}
-
-article:hover .tweet-body {
-  opacity: 1;
-}
-
-article:hover .tweet-footer {
+article:hover .active {
   opacity: 1;
 }
 
@@ -83,7 +71,7 @@ article header {
   opacity: 0.5;
 }
 
-#tweet-body-container {
+.tweet-body-container {
   border-bottom: 2px solid #545149;
   margin: 10px 10px 5px 10px;
 }
