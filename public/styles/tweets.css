@@ -30,7 +30,7 @@ article header {
   flex-direction: row;
 }
 
-.tweet-header img {
+.avatar-img {
   opacity: 0.5;
   height: 50px;
 }
