@@ -3,6 +3,16 @@ article {
   display: flex;
   flex-direction: column;
   border: 2px solid #545149;
+  font-weight: 300;
+}
+
+article:hover {
+  box-shadow: 5px 10px #c5cbe3;
+  font-weight: 700;
+}
+
+article:hover header > *:last-child {
+  display: inline-block;
 }
 
 article header {
@@ -28,12 +38,11 @@ article header {
 
 .avatar-name {
   padding-top: 10px;
-  font-weight: 300;
 }
 
 .avatar-handle {
+  display: none;
   padding-top: 10px;
-  font-weight: 300;
   color: #c5cbe3;
 }
 
