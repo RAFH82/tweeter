@@ -3,16 +3,32 @@ article {
   display: flex;
   flex-direction: column;
   border: 2px solid #545149;
-  font-weight: 300;
+  font-weight: 700;
+  opacity: 1;
 }
 
 article:hover {
   box-shadow: 5px 10px #c5cbe3;
-  font-weight: 700;
 }
 
 article:hover header > *:last-child {
   display: inline-block;
+}
+
+article:hover img {
+  opacity: 1;
+}
+
+article:hover .avatar-name {
+  opacity: 1;
+}
+
+article:hover .tweet-body {
+  opacity: 1;
+}
+
+article:hover .tweet-footer {
+  opacity: 1;
 }
 
 article header {
@@ -27,6 +43,7 @@ article header {
 }
 
 .tweet-header img {
+  opacity: 0.5;
   height: 50px;
 }
 
@@ -37,7 +54,9 @@ article header {
 }
 
 .avatar-name {
+  font-weight: 300;
   padding-top: 10px;
+  opacity: 0.5;
 }
 
 .avatar-handle {
@@ -47,10 +66,11 @@ article header {
 }
 
 .tweet-body {
-  margin: 10px 10px 5px 10px;
+  margin-bottom: 2px;
   height: 3em;
-  border-bottom: 2px solid #545149;
   font-size: 16px;
+  opacity: 0.5;
+  overflow: auto;
 }
 
 .tweet-footer {
@@ -60,4 +80,10 @@ article header {
   flex-direction: row;
   font-size: 12px;
   height: 2em;
+  opacity: 0.5;
+}
+
+#tweet-body-container {
+  border-bottom: 2px solid #545149;
+  margin: 10px 10px 5px 10px;
 }
