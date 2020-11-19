@@ -60,28 +60,29 @@ $(document).ready(() => {
   loadTweets(); // load tweets upon page load
 
   $(".new-tweet form").submit(event => {
+    $(".error-line").hide();
     event.preventDefault();
     const $formData = $("#tweet-text").serialize();
     const $tweetText = $("#tweet-text").val();
 
-    if ($tweetText.length >= 140) {
-      alert("Cannot tweet more than 140 characters! Silly goose!");
+    if ($tweetText.length > 140) {
+      $(".error-line span").text("Cannot tweet more than 140 characters! Silly goose!");
+      $(".error-line").slideDown();
     } else if ($tweetText !== "") {
       $.ajax("/tweets", {
         type: "POST",
         data: $formData,
       })
         .then(() => {
-          $("#tweet-text").val(""); // empty the tweet form box upon completion
+          $emptyTweet; // empty the tweet form box upon completion
           loadTweets(); // load tweets without having to refresh page
         })
         .catch(error => {
           console.log(error);
         });
     } else {
-      alert("Cannot submit an empty tweet! Silly goose!");
+      $(".error-line span").text("Cannot send an empty tweet, Silly goose!");
+      $(".error-line").slideDown();
     }
   });
-
-  // renderTweets(data);
 });
