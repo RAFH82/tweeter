@@ -4,32 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(() => {
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png",
-  //       "handle": "@SirIsaac",
-  //     },
-  //     "content": {
-  //       "text":
-  //         "If I have seen further it is by standing on the shoulders of giants",
-  //     },
-  //     "created_at": 1461116232227,
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd",
-  //     },
-  //     "content": {
-  //       "text": "Je pense , donc je suis",
-  //     },
-  //     "created_at": 1461113959088,
-  //   },
-  // ];
-
   function createTweetElement(tweetData) {
     const dayInMs = 1000 * 60 * 60 * 24;
 
@@ -64,7 +38,8 @@ $(document).ready(() => {
   }
 
   function renderTweets(tweets) {
-    $("#tweets-container").empty();
+    $("#tweets-container").empty(); // Empty the section before loading all the tweets, as a reset
+    
     for (let tweetsData of tweets) {
       const $tweet = createTweetElement(tweetsData);
       $("#tweets-container").append($tweet);
@@ -72,24 +47,39 @@ $(document).ready(() => {
   }
 
   function loadTweets() {
-    $.ajax("/tweets", { type: "GET" }).then(data => {
-      renderTweets(data);
-    });
-  }
-
-  loadTweets();
-
-  $(".new-tweet form").submit(event => {
-    event.preventDefault();
-    const $formData = $("#tweet-text").serialize();
-    $.ajax("/tweets", {
-      type: "POST",
-      data: $formData,
-    })
-      .then($("#tweet-text").val(""))
+    $.ajax("/tweets", { type: "GET" })
+      .then(data => {
+        renderTweets(data);
+      })
       .catch(error => {
         console.log(error);
       });
+  }
+
+  loadTweets(); // load tweets upon page load
+
+  $(".new-tweet form").submit(function (event) {
+    event.preventDefault();
+    const $formData = $("#tweet-text").serialize();
+    const $tweetText = $("#tweet-text").val();
+
+    if ($tweetText.length >= 140) {
+      alert("Cannot tweet more than 140 characters! Silly goose!");
+    } else if ($tweetText !== "") {
+      $.ajax("/tweets", {
+        type: "POST",
+        data: $formData,
+      })
+        .then(() => {
+          $("#tweet-text").val(""); // empty the tweet form box upon completion
+          loadTweets(); // load tweets without having to refresh page
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      alert("Cannot submit an empty tweet! Silly goose!");
+    }
   });
 
   // renderTweets(data);
