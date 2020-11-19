@@ -4,6 +4,17 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(() => {
+  // Load tweets upon page load
+  loadTweets();
+
+  // Toggle Tweet Box
+  $(".new-tweet").hide();
+  $("#tweet-arrow").click(() => {
+    $(".new-tweet").slideToggle("slow");
+    $("#tweet-text").focus();
+  });
+
+  // Create tweets when passed in the DB
   function createTweetElement(tweetData) {
     const dayInMs = 1000 * 60 * 60 * 24;
     const daysPassed = Math.floor((Date.now() - tweetData.created_at) / dayInMs);
@@ -38,15 +49,17 @@ $(document).ready(() => {
         `;
     return $tweet;
   }
-
+  // Renders Tweets
   function renderTweets(tweets) {
-    $("#tweets-container").empty(); // Empty the section before loading all the tweets, as a reset
+    // Empty the section before loading all the tweets, as a reset
+    $("#tweets-container").empty();
     for (let tweetsData of tweets) {
       const $tweet = createTweetElement(tweetsData);
-      $("#tweets-container").prepend($tweet); // Load newest tweets first
+      // Load newest tweets first
+      $("#tweets-container").prepend($tweet);
     }
   }
-
+  // Loads Tweets
   function loadTweets() {
     $.ajax("/tweets", { type: "GET" })
       .then(data => {
@@ -56,9 +69,7 @@ $(document).ready(() => {
         console.log(error);
       });
   }
-
-  loadTweets(); // load tweets upon page load
-
+  // Tweet Form Logic & Error handling
   $(".new-tweet form").submit(event => {
     $(".error-line").slideDown().removeAttr("open");
     event.preventDefault();
