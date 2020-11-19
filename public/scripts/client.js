@@ -39,10 +39,10 @@ $(document).ready(() => {
 
   function renderTweets(tweets) {
     $("#tweets-container").empty(); // Empty the section before loading all the tweets, as a reset
-    
+    // tweets.sort((a, b) => (a.created_at < b.created_at ? 1 : -1));
     for (let tweetsData of tweets) {
       const $tweet = createTweetElement(tweetsData);
-      $("#tweets-container").append($tweet);
+      $("#tweets-container").prepend($tweet);
     }
   }
 
