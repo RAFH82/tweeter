@@ -93,9 +93,7 @@ nav span {
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
-.hvr-wobble-vertical:hover,
-.hvr-wobble-vertical:focus,
-.hvr-wobble-vertical:active {
+.hvr-wobble-vertical {
   -webkit-animation-name: hvr-wobble-vertical;
   animation-name: hvr-wobble-vertical;
   -webkit-animation-duration: 1s;
@@ -103,5 +101,5 @@ nav span {
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
   -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
 }
