@@ -78,6 +78,13 @@
   text-align: center;
   display: none;
   color: #cd4444;
+  white-space: nowrap;
+}
+
+.error-message {
+  font-size: 1em;
+  display: inline-block;
+  color: #cd4444;
   background-color: #f4f1ec;
   border: 5px solid #cd4444;
   padding: 1px 20px 1px 20px;
