@@ -78,7 +78,6 @@ $(document).ready(() => {
     if ($tweetText.length > 140) {
       $(".error-line").slideDown().removeAttr("open");
       $(".error-line span").text("Cannot tweet more than 140 characters! Silly goose!");
-      // $(".error-line").attr("open", true);
     } else if ($tweetText !== "") {
       $.ajax("/tweets", {
         type: "POST",
@@ -94,7 +93,6 @@ $(document).ready(() => {
     } else {
       $(".error-line").slideDown().removeAttr("open");
       $(".error-line span").text("Cannot send an empty tweet, Silly goose!");
-      // $(".error-line").attr("open", true);
     }
   });
 });
