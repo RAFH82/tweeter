@@ -31,10 +31,7 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-    <script
-      type="text/javascript"
-      src="/scripts/composer-char-counter.js"
-    ></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     <script src="https://use.fontawesome.com/7165539a42.js"></script>
   </head>
 
@@ -64,10 +61,15 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div class="error-line">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span></span>
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+        </div>
         <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
           <label for="tweet-text">What are you humming about?</label>
-          <textarea type="tweet-text" id="tweet-text" name="text"></textarea>
+          <textarea type="tweet-text" id="tweet-text" name="tweet"></textarea>
           <div id="tweet-bottom">
             <button id="tweet-button" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
