@@ -11,7 +11,7 @@ $(document).ready(() => {
   $(".new-tweet").hide();
   $("#tweet-arrow").click(() => {
     $(".new-tweet").slideToggle("slow");
-    $("#tweet-text").focus();
+    $(".new-tweet").focus();
   });
 
   // Create tweets when passed in the DB
@@ -71,29 +71,30 @@ $(document).ready(() => {
   }
   // Tweet Form Logic & Error handling
   $(".new-tweet form").submit(event => {
-    $(".error-line").slideDown().removeAttr("open");
     event.preventDefault();
     const $formData = $("#tweet-text").serialize();
     const $tweetText = $("#tweet-text").val();
 
     if ($tweetText.length > 140) {
+      $(".error-line").slideDown().removeAttr("open");
       $(".error-line span").text("Cannot tweet more than 140 characters! Silly goose!");
-      $(".error-line").attr("open", true);
+      // $(".error-line").attr("open", true);
     } else if ($tweetText !== "") {
       $.ajax("/tweets", {
         type: "POST",
         data: $formData,
       })
         .then(() => {
-          $emptyTweet; // empty the tweet form box upon completion
+          $("#tweet-text").val(""); // empty the tweet form box upon completion
           loadTweets(); // load tweets without having to refresh page
         })
         .catch(error => {
           console.log(error);
         });
     } else {
+      $(".error-line").slideDown().removeAttr("open");
       $(".error-line span").text("Cannot send an empty tweet, Silly goose!");
-      $(".error-line").attr("open", true);
+      // $(".error-line").attr("open", true);
     }
   });
 });
