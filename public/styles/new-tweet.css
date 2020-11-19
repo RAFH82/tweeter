@@ -70,15 +70,20 @@
 }
 
 .error-line {
-  font-size: 1em;
+  font-size: 1.2em;
   height: auto;
-  display: inline-flex;
+  width: 100%;
+  background-color: transparent;
   justify-content: center;
   flex-direction: column;
   text-align: center;
   display: none;
   color: #cd4444;
   white-space: nowrap;
+  position: static;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .error-message {
