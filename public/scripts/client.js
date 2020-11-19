@@ -6,10 +6,12 @@
 $(document).ready(() => {
   function createTweetElement(tweetData) {
     const dayInMs = 1000 * 60 * 60 * 24;
-
-    const daysPassed = Math.floor(
-      (Date.now() - tweetData.created_at) / dayInMs
-    );
+    const daysPassed = Math.floor((Date.now() - tweetData.created_at) / dayInMs);
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
     const $tweet = `
     <article class="tweet">
           <header class="tweet-header active">
@@ -22,7 +24,7 @@ $(document).ready(() => {
             <div class="avatar-handle">${tweetData.user.handle}</div>
           </header>
           <div class="tweet-body-container">
-            <div class="tweet-body active">${tweetData.content.text}</div>
+            <div class="tweet-body active">${escape(tweetData.content.text)}</div>
           </div>
           <footer class="tweet-footer active">
             <div>${daysPassed} days ago</div>
@@ -57,7 +59,7 @@ $(document).ready(() => {
 
   loadTweets(); // load tweets upon page load
 
-  $(".new-tweet form").submit(function (event) {
+  $(".new-tweet form").submit(event => {
     event.preventDefault();
     const $formData = $("#tweet-text").serialize();
     const $tweetText = $("#tweet-text").val();
