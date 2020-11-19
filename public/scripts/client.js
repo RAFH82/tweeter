@@ -60,14 +60,14 @@ $(document).ready(() => {
   loadTweets(); // load tweets upon page load
 
   $(".new-tweet form").submit(event => {
-    $(".error-line").hide();
+    $(".error-line").slideDown().removeAttr("open");
     event.preventDefault();
     const $formData = $("#tweet-text").serialize();
     const $tweetText = $("#tweet-text").val();
 
     if ($tweetText.length > 140) {
       $(".error-line span").text("Cannot tweet more than 140 characters! Silly goose!");
-      $(".error-line").slideDown();
+      $(".error-line").attr("open", true);
     } else if ($tweetText !== "") {
       $.ajax("/tweets", {
         type: "POST",
@@ -82,7 +82,7 @@ $(document).ready(() => {
         });
     } else {
       $(".error-line span").text("Cannot send an empty tweet, Silly goose!");
-      $(".error-line").slideDown();
+      $(".error-line").attr("open", true);
     }
   });
 });
