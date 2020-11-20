@@ -45,3 +45,11 @@ Pulse Grow @-webkit-keyframes hvr-pulse-grow {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
+@media only screen and (max-width: 1024px) {
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 900;
+  }
+}
