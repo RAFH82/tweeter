@@ -47,3 +47,29 @@ main {
   flex-direction: column;
   font-weight: bold;
 }
+
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .content-container {
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  main {
+    width: 50%;
+    margin-left: 5%;
+  }
+
+  header {
+    margin-right: 5%;
+    width: 40%;
+  }
+}
