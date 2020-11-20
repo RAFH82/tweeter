@@ -23,10 +23,6 @@
   opacity: 1;
 }
 
-.tweet header {
-  background-color: #f4f1ec;
-}
-
 .avatar-container {
   display: flex;
   justify-content: center;
@@ -38,6 +34,10 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+}
+
+.avatar-handle {
+  float: right;
 }
 
 .tweet-body-container {
@@ -83,4 +83,10 @@
 
 .socials {
   display: none;
+}
+
+@media only screen and (min-width: 1024px) {
+  .tweet header {
+    width: auto;
+  }
 }
