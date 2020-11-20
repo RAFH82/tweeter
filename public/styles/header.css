@@ -14,14 +14,14 @@
 
 Pulse Grow @-webkit-keyframes hvr-pulse-grow {
   to {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
   }
 }
 @keyframes hvr-pulse-grow {
   to {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
   }
 }
 
