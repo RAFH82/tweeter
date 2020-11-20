@@ -12,7 +12,8 @@
   margin-top: 120px;
 }
 
-Pulse Grow @-webkit-keyframes hvr-pulse-grow {
+/* Pulse of Avatar img */
+@-webkit-keyframes hvr-pulse-grow {
   to {
     -webkit-transform: scale(1.08);
     transform: scale(1.08);
