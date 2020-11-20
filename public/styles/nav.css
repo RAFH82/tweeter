@@ -104,3 +104,10 @@ nav span {
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: infinite;
 }
+
+@media only screen and (max-width: 1024px) {
+  nav {
+    background-image: url(../images/brushed-alum.png);
+    background-color: #6773a1;
+  }
+}
