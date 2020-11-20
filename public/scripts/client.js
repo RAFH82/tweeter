@@ -11,7 +11,7 @@ $(document).ready(() => {
   $(".new-tweet").hide();
   $("#tweet-arrow").click(() => {
     $(".new-tweet").slideToggle("slow");
-    $(".new-tweet").focus();
+    $("#tweet-text").focus();
   });
 
   // Create tweets when passed in the DB
