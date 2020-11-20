@@ -85,6 +85,8 @@ $(document).ready(() => {
       })
         .then(() => {
           $("#tweet-text").val(""); // empty the tweet form box upon completion
+          $("output").val(140); // reset count back to 140
+          $("#tweet-text").focus(); // refocus on text area
           loadTweets(); // load tweets without having to refresh page
         })
         .catch(error => {
