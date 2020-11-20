@@ -20,6 +20,7 @@
     />
 
     <!-- App CSS -->
+    <meta name="viewport" content="width=device-width, internal-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
@@ -46,39 +47,41 @@
         <div id="tweet-arrow"><i class="fa fa-angle-double-down hvr-wobble-vertical" aria-hidden="true"></i></div>
       </div>
     </nav>
+    
+    <div class="content-container"> 
+      <!-- Header with Avatar -->
+      <header class="header">
+        <div>
+          <img alt="profile picture" class="hvr-pulse-grow" src="/images/profile-hex.png" />
+        </div>
+        <br />
+        <div>
+          <span><strong>Ruby</strong>Tuesday</span>
+        </div>
+      </header>
 
-    <!-- Header with Avatar -->
-    <header>
-      <div>
-        <img alt="profile picture" class="hvr-pulse-grow" src="/images/profile-hex.png" />
-      </div>
-      <br />
-      <div>
-        <span><strong>Ruby</strong>Tuesday</span>
-      </div>
-    </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <dialog aria-describedby="alert-dialog" class="error-line">
-          <div class="error-message">
-            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-            <span id="alert-dialog"></span>
-            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-          </div>
-        </dialog>
-        <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea type="tweet-text" id="tweet-text" name="text"></textarea>
-          <div id="tweet-bottom">
-            <button id="tweet-button" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <section id="tweets-container"></section>
-    </main>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <dialog aria-describedby="alert-dialog" class="error-line">
+            <div class="error-message">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+              <span id="alert-dialog"></span>
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            </div>
+          </dialog>
+          <h2>Compose Tweet</h2>
+          <form action="/tweets" method="POST">
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea type="tweet-text" id="tweet-text" name="text"></textarea>
+            <div id="tweet-bottom">
+              <button id="tweet-button" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <section id="tweets-container"></section>
+      </main>
+    </div>
   </body>
 </html>
