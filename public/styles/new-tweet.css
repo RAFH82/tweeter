@@ -18,18 +18,6 @@
   padding-top: 0.5em;
 }
 
-.counter {
-  font-family: "Bungee", sans-serif;
-}
-
-.counterFull {
-  color: red;
-}
-
-.new-tweet {
-  width: 100%;
-}
-
 #tweet-button {
   background-color: #4056a1;
   color: white;
@@ -67,6 +55,18 @@
 .hvr-underline-from-left:focus:before,
 .hvr-underline-from-left:active:before {
   right: 0;
+}
+
+.counter {
+  font-family: "Bungee", sans-serif;
+}
+
+.counterFull {
+  color: red;
+}
+
+.new-tweet {
+  width: 100%;
 }
 
 .error-line {
