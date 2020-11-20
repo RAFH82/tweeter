@@ -19,3 +19,7 @@ This repository is the starter code for the project: Students will fork and clon
 - Body Parser
 - Chance
 
+# Screenshots
+
+![Tweeter: Desktop Mode](https://github.com/RAFH82/tweeter/blob/master/docs/Tweeter-Desktop%20Mode.png)
+![Tweeter: Tablet Mode](https://github.com/RAFH82/tweeter/blob/master/docs/Tweeter-Tablet%20Mode.png)
