@@ -16,8 +16,13 @@ $(document).ready(() => {
 
   // Create tweets when passed in the DB
   function createTweetElement(tweetData) {
-    const dayInMs = 1000 * 60 * 60 * 24;
-    const daysPassed = Math.floor((Date.now() - tweetData.created_at) / dayInMs);
+    const timeCreatedAt = function (tweetTime) {
+      const dayInMs = 1000 * 60 * 60 * 24;
+      const daysPassed = Math.floor((Date.now() - tweetTime) / dayInMs);
+      return daysPassed;
+    };
+
+    // Protect against code injection
     const escape = function (str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
@@ -38,7 +43,7 @@ $(document).ready(() => {
             <div class="tweet-body active">${escape(tweetData.content.text)}</div>
           </div>
           <footer class="tweet-footer active">
-            <div>${daysPassed} days ago</div>
+            <div>${timeCreatedAt(tweetData.created_at)} days ago</div>
             <div>
               <i class="fa fa-flag" aria-hidden="true"></i>
               <i class="fa fa-heart" aria-hidden="true"></i>
@@ -49,7 +54,7 @@ $(document).ready(() => {
         `;
     return $tweet;
   }
-  // Renders Tweets
+
   function renderTweets(tweets) {
     // Empty the section before loading all the tweets, as a reset
     $("#tweets-container").empty();
@@ -59,7 +64,7 @@ $(document).ready(() => {
       $("#tweets-container").prepend($tweet);
     }
   }
-  // Loads Tweets
+
   function loadTweets() {
     $.ajax("/tweets", { type: "GET" })
       .then(data => {
