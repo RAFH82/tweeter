@@ -14,20 +14,32 @@ $(document).ready(() => {
     $("#tweet-text").focus();
   });
 
-  // Create tweets when passed in the DB
-  function createTweetElement(tweetData) {
-    const timeCreatedAt = function (tweetTime) {
-      const dayInMs = 1000 * 60 * 60 * 24;
-      const daysPassed = Math.floor((Date.now() - tweetTime) / dayInMs);
-      return daysPassed;
+  function timeCreatedAt(tweetTime) {
+    let timeStamp = Date.now() - tweetTime;
+    const date = {
+      millisecond: 1000,
+      second: 60,
+      minute: 60,
+      hour: 24,
     };
 
-    // Protect against code injection
-    const escape = function (str) {
-      let div = document.createElement("div");
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
-    };
+    for (let key in date) {
+      if (timeStamp / date[key] < 1) {
+        return timeStamp === 1 ? `${timeStamp} ${key} ago` : `${timeStamp} ${key}s ago`;
+      }
+      timeStamp = Math.floor(timeStamp / date[key]);
+    }
+    return timeStamp === 1 ? `${timeStamp} day ago` : `${timeStamp} days ago`;
+  }
+
+  // Protect against code injection
+  function escape(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  function createTweetElement(tweetData) {
     const $tweet = `
     <article class="tweet">
           <header class="tweet-header active">
@@ -43,7 +55,7 @@ $(document).ready(() => {
             <div class="tweet-body active">${escape(tweetData.content.text)}</div>
           </div>
           <footer class="tweet-footer active">
-            <div>${timeCreatedAt(tweetData.created_at)} days ago</div>
+            <div>${timeCreatedAt(tweetData.created_at)}</div>
             <div>
               <i class="fa fa-flag" aria-hidden="true"></i>
               <i class="fa fa-heart" aria-hidden="true"></i>
